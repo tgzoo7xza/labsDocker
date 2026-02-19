@@ -1,0 +1,9 @@
+services:
+  api:
+    build: .
+    container_name: nestjs_api
+    ports:
+      - "8080:3000"  # [Port เครื่องเรา]:[Port ใน Container]
+    environment:
+      - PORT=3000    # ส่งค่า PORT ไปให้ NestJS (ที่แก้ใน main.ts)
+    restart: always
