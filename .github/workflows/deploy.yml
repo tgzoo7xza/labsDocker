@@ -20,12 +20,13 @@ jobs:
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_TOKEN }}
 
-      - name: Build and Push Docker Image
+      - name: Build and push
         uses: docker/build-push-action@v5
         with:
-          context: ./
+          context: .
           push: true
-          tags: tam07x/labs-nestjs-action:latest
+          # ตรงนี้สำคัญมาก! ต้องเปลี่ยนจาก '***' หรือชื่ออื่น เป็นชื่อ Username ของคุณ
+          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/labs-nestjs-action:latest
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
